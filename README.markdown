@@ -1,12 +1,12 @@
-# Active Admin for CakePHP
+# Active Admin for CakePHP 2.0
 
 Based on Active Admin for RoR (http://activeadmin.info/). This plugin for CakePHP gives you the same administration interface for the PHP framework. It also uses Nik Chankov's Filter component (http://nik.chankov.net).
 
 ## Install
 
-1 - Clone the project as "active_admin" into your apps plugins-folder
+1 - Clone the project as "ActiveAdmin" into your apps plugins-folder (app/Plugin/)
 
-2 - Copy the active_admin/views/layouts/admin.ctp into your app's layout-folder
+2 - Copy the ActiveAdmin/View/Layouts/admin.ctp into your app's layout-folder
 
 ### Prepare your app's controllers
 
@@ -17,14 +17,14 @@ Based on Active Admin for RoR (http://activeadmin.info/). This plugin for CakePH
 4 - For the admin_index function:
 
     function admin_index() {
-    $this->paginate['Post']['order'] = array('Post.date' => 'desc');
-    $this->Post->recursive = 0;
-    // Add this 
-    $filter = $this->Filter->process($this);
-    $this->set('posts', $this->paginate(null, $filter));
+        $this->paginate['Post']['order'] = array('Post.date' => 'desc');
+        $this->Post->recursive = 0;
+        // Add this 
+        $filter = $this->Filter->process($this);
+        $this->set('posts', $this->paginate(null, $filter));
     }
 
-5 - And update your view/(controller)/admin_index.ctp views, using a table-header element that enable table-sorting:
+5 - And update your View/(Controller)/admin_index.ctp views, using a table-header element that enable table-sorting:
 
     <table cellpadding="0" cellspacing="0">
     <?php echo $this->element('table_header', array('plugin'=>'active_admin','keys'=>array('id', 'title', 'slug','created', 'modified'))); ?>
