@@ -1,4 +1,4 @@
-# Active Admin for CakePHP 2.0
+# Active Admin for CakePHP 2.0 (With 2.1 plugin layout functionality) - 2.1 compliant
 
 Based on Active Admin for RoR (http://activeadmin.info/). This plugin for CakePHP gives you the same administration interface for the PHP framework. It also uses Nik Chankov's Filter component (http://nik.chankov.net).
 
