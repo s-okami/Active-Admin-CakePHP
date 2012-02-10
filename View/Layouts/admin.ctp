@@ -4,9 +4,9 @@
 		<meta content="text/html; charset=utf-8" http-equiv="Content-type"/>
 		<title><?php echo $title_for_layout; ?></title>
 		<?php
-			echo $html->css('/active_admin/css/active_admin');
-			echo $javascript->link('/active_admin/js/active_admin_vendor');
-			echo $javascript->link('/active_admin/js/active_admin');
+      echo $this->Html->css('/active_admin/css/admin');
+      echo $this->Html->script('/active_admin/js/admin_vendor');
+      echo $this->Html->script('/active_admin/js/admin');
 			echo $scripts_for_layout;
 		?>
 	</head>
