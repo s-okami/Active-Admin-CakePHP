@@ -6,11 +6,30 @@ Based on Active Admin for RoR (http://activeadmin.info/). This plugin for CakePH
 
 1 - Clone the project as "ActiveAdmin" into your apps plugins-folder (app/Plugin/)
 
-2 - Copy the ActiveAdmin/View/Layouts/admin.ctp into your app's layout-folder
+2 - Open (or create) your app/Controller/AppController.php file and add the following:
+
+    /**
+     * Before Filter method
+     *
+     * @return void
+     */
+    function beforeFilter() {
+        if (isset($this->params['prefix']) && $this->params['prefix'] == 'admin') {
+            $this->layout = 'ActiveAdmin.admin';
+            if ($user = $this->Auth->user()){
+                if(!$this->isAuthorized()){
+                    $this->redirect($this->Auth->logout());
+                }
+            }
+        }else{
+            $this->Auth->allow('*');
+        }
+    }
 
 ### Prepare your app's controllers
 
-3 - The Filter component is needed for filtering of records:
+3 - The Filter component is needed for filtering of records - This can be added on a per controller basis
+or simply added to the app/Controller/AppController.php file for all controllers to use
 
     var $components = array('ActiveAdmin.Filter');
 
