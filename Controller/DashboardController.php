@@ -1,5 +1,5 @@
 <?php
-App::uses('AppController', 'Controller');
+App::uses('ActiveAdminAppController', 'Controller');
 /**
  * Dashboard Controller
  *
@@ -10,10 +10,6 @@ class DashboardController extends ActiveAdminAppController {
     var $name = 'Dashboard';
 
     function admin_index() {
-        $this->redirect('dashboard');
     }
 
-    function admin_dashboard() {
-
-    }
 }
