@@ -10,14 +10,6 @@
       echo $scripts_for_layout;
     ?>
   </head>
-  <?php
-  $items = array(
-    'Posts'=>'posts',
-    'Categories'=>'categories',
-    'Comments'=>'comments',
-    'Users'=>'users',
-    );
-  ?>
   <body class="">
     <div id="wrapper">
       <div id="header">
