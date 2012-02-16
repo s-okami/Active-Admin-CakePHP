@@ -1,5 +1,4 @@
 <?php
-App::uses('Dashboard', 'Model');
 App::uses('File', 'Utility');
 App::uses('Folder', 'Utility');
 App::uses('AppController', 'Controller');
@@ -9,6 +8,7 @@ class ActiveAdminAppController extends AppController {
     
     function beforeFilter(){
         parent::beforeFilter();
+        $this->loadModel('ActiveAdmin.Dashboard');
         $adminMenu = $this->Dashboard->find('all',array('condition'=>array('Dashboard.name' => 'nav_menu')));
         $adminPrefixes = Configure::read('Routing.prefixes');
         $this->set(compact('adminMenu','adminPrefixes'));
