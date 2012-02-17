@@ -48,12 +48,12 @@
             <?php echo $this->Session->flash('auth'); ?>
           <?php 
           if($this->params['action'] == 'admin_index' && $this->params['controller'] != 'dashboard') {
-            echo $this->element('paging_info', array('plugin'=>'active_admin'));
+            echo $this->element('paging_info', array(), array('plugin'=>'ActiveAdmin'));
           }
           echo $content_for_layout;
           
           if($this->params['action'] == 'admin_index' && $this->params['controller'] != 'dashboard') {
-            echo $this->element('paging', array('plugin'=>'active_admin'));
+            echo $this->element('paging', array(), array('plugin'=>'ActiveAdmin'));
           }
           
           ?>
@@ -62,16 +62,16 @@
         <div id="sidebar">
           <?php 
           if($this->params['action'] == 'admin_index' && $this->params['controller'] != 'dashboard') {
-            $file = new File(ELEMENTS . strtolower($this->name) . '_filter.ctp');
+            $file = new File(APP . 'View' . DS . 'Elements' . DS . strtolower($this->name) . '_filter.ctp');
             if ($file->exists()) { 
               echo $this->element(strtolower($this->name) . '_filter');
             } else {
-              echo $this->element('sidebar_filter', array('plugin'=>'active_admin'));
+              echo $this->element('sidebar_filter', array(), array('plugin'=>'ActiveAdmin'));
             }
           }
           if($this->params['action'] == 'admin_add' || $this->params['action'] == 'admin_edit') {
             
-            $file = new File(ELEMENTS . strtolower($this->name) . '_edit_info.ctp');
+            $file = new File(APP . 'View' . DS . 'Elements' . DS . strtolower($this->name) . '_edit_info.ctp');
             if ($file->exists()) { 
               echo $this->element(strtolower($this->name) . '_edit_info');
             }

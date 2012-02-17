@@ -311,7 +311,7 @@ table td{padding:10px 12px 8px 12px;border-bottom:1px solid #e8e8e8;vertical-ali
 .sidebar_section hr{border:none;border-bottom:1px solid #E8E8E8;}
 
 /* Pagination */
-.pagination_information{float:right;margin-bottom:5px;font-size:0.95em;color:#b3bcc1;}
+.pagination_information{margin-bottom:5px;font-size:0.95em;color:#b3bcc1;}
 .pagination_information b{color:#5c6469;}
 .paginated_collection_contents{clear:both;}
 .pagination{display:inline;font-size:0.9;margin-left:10px;}
