@@ -15,13 +15,11 @@ class ActiveAdminAppController extends AppController {
         $pluginName = Inflector::camelize(Inflector::singularize($this->request->params['plugin']));
         if(!empty($pluginName)){
             $this->loadModel($pluginName.".".$modelName);
-            $this->set('modelName',$pluginName.".".$modelName);
         }else{
             $this->loadModel($modelName);
-            $this->set('modelName',$modelName);
         }
         $displayField = $this->{$modelName}->displayField; 
-        $this->set(compact('adminMenu','displayField'));
+        $this->set(compact('adminMenu','displayField','modelName'));
     }
 }
 
