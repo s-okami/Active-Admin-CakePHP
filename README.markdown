@@ -6,7 +6,10 @@ Based on Active Admin for RoR (http://activeadmin.info/). This plugin for CakePH
 
 1 - Clone the project as "ActiveAdmin" into your apps plugins-folder (app/Plugin/)
 
-2 - Open (or create) your app/Controller/AppController.php file and add the following:
+2 - Enable the plugin in your app/Config/bootstrap.php file
+    CakePlugin::load(array('ActiveAdmin' => array('routes' => true));
+
+3 - Open (or create) your app/Controller/AppController.php file and add the following:
 
     /**
      * Before Filter method
@@ -16,6 +19,7 @@ Based on Active Admin for RoR (http://activeadmin.info/). This plugin for CakePH
     function beforeFilter() {
         if (isset($this->params['prefix']) && $this->params['prefix'] == 'admin') {
             $this->layout = 'ActiveAdmin.admin';
+            // Auth is used here and checked for a valid user
             if ($user = $this->Auth->user()){
                 if(!$this->isAuthorized()){
                     $this->redirect($this->Auth->logout());
@@ -28,12 +32,12 @@ Based on Active Admin for RoR (http://activeadmin.info/). This plugin for CakePH
 
 ### Prepare your app's controllers
 
-3 - The Filter component is needed for filtering of records - This can be added on a per controller basis
+4 - The Filter component is needed for filtering of records - This can be added on a per controller basis
 or simply added to the app/Controller/AppController.php file for all controllers to use
 
     var $components = array('ActiveAdmin.Filter');
 
-4 - For the admin_index function:
+5 - For the admin_index function:
 
     function admin_index() {
         $this->paginate['Post']['order'] = array('Post.date' => 'desc');
@@ -43,7 +47,7 @@ or simply added to the app/Controller/AppController.php file for all controllers
         $this->set('posts', $this->paginate(null, $filter));
     }
 
-5 - And update your View/(Controller)/admin_index.ctp views, using a table-header element that enable table-sorting:
+6 - And update your View/(Controller)/admin_index.ctp views, using a table-header element that enable table-sorting:
 
     <table cellpadding="0" cellspacing="0">
     <?php echo $this->element('table_header', array('keys'=>array('id', 'title', 'slug','created', 'modified')), array('plugin'=>'ActiveAdmin')); ?>
