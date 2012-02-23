@@ -73,3 +73,7 @@ or simply added to the app/Controller/AppController.php file for all controllers
       </tr>
     <?php endforeach; ?>
     </table>
+
+7 - Adding Admin Menu controller items can be done via the provided console shell (eg. adding Posts or the Categories from Blog plugin)
+    ./Console/cake ActiveAdmin.resource Posts
+    ./Console/cake ActiveAdmin.resource Blog.Categories
