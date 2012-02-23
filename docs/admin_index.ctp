@@ -10,7 +10,7 @@
 	?>
 	<tr<?php echo $class;?>>
 		<td><?php echo $post['Post']['id']; ?>&nbsp;</td>
-		<td><?php echo $post['Post']['title']; ?> (<?php echo count($api['Feed'])?>)</td>
+		<td><?php echo $post['Post']['title']; ?></td>
 		<td><?php echo $post['Post']['slug']; ?>&nbsp;</td>
 		<td><?php echo $post['Post']['created']; ?>&nbsp;</td>
 		<td><?php echo $post['Post']['modified']; ?>&nbsp;</td>

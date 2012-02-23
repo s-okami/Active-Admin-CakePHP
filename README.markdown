@@ -57,7 +57,7 @@ or simply added to the app/Controller/AppController.php file for all controllers
       ?>
       <tr<?php echo $class;?>>
         <td><?php echo $post['Post']['id']; ?>&nbsp;</td>
-        <td><?php echo $post['Post']['title']; ?> (<?php echo count($api['Feed'])?>)</td>
+        <td><?php echo $post['Post']['title']; ?>&nbsp;</td>
         <td><?php echo $post['Post']['slug']; ?>&nbsp;</td>
         <td><?php echo $post['Post']['created']; ?>&nbsp;</td>
         <td><?php echo $post['Post']['modified']; ?>&nbsp;</td>
