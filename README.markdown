@@ -21,7 +21,7 @@ Based on Active Admin for RoR (http://activeadmin.info/). This plugin for CakePH
             $this->layout = 'ActiveAdmin.admin';
             // Auth is used here and checked for a valid user
             if ($user = $this->Auth->user()){
-                if(!$this->isAuthorized()){
+                if(!$this->isAuthorized($user)){
                     $this->redirect($this->Auth->logout());
                 }
             }
