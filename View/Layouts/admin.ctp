@@ -16,8 +16,15 @@
         <h1 id="site_title"><?php echo $this->Html->link('Site', "/"); ?></h1>
         <?php if(isset($adminMenu) && !empty($adminMenu)): ?>
         <ul class="tabbed_navigation" id="tabs">
-            <?php foreach($adminMenu as $menuItem): ?>
-            <li<?php if($this->params['controller'] == $menuItem['Dashboard']['value']) echo " class='current'"?>><?php echo $this->Html->link(str_replace("."," ",$menuItem['Dashboard']['value']), DS . 'admin' . DS . str_replace(".",DS,strtolower($menuItem['Dashboard']['value']))); ?></li>
+            <?php foreach($adminMenu as $menuItem):
+                $menuTitleArray = explode(".",$menuItem['Dashboard']['value']);
+                if($menuTitleArray[0] == $menuTitleArray[1]){
+                     $menuTitle = $menuTitleArray[0];
+                }else {
+                    $menuTitle = $menuTitleArray[0]." ".$menuTitleArray[1];
+                }
+              ?>
+            <li<?php if($this->params['controller'] == $menuItem['Dashboard']['value']) echo " class='current'"?>><?php echo $this->Html->link($menuTitle, DS . 'admin' . DS . str_replace(".",DS,strtolower($menuItem['Dashboard']['value']))); ?></li>
             <?php endforeach; ?>
         </ul>
         <?php endif; ?>
