@@ -18,7 +18,7 @@
         <ul class="tabbed_navigation" id="tabs">
             <?php foreach($adminMenu as $menuItem):
                 $menuTitleArray = explode(".",$menuItem['Dashboard']['value']);
-                if($menuTitleArray[0] == $menuTitleArray[1]){
+                if(sizeof($menuTitleArray) == 1 || $menuTitleArray[0] == $menuTitleArray[1]){
                      $menuTitle = $menuTitleArray[0];
                 }else {
                     $menuTitle = $menuTitleArray[0]." ".$menuTitleArray[1];
