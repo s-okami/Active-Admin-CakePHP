@@ -28,14 +28,7 @@
             <?php endforeach; ?>
         </ul>
         <?php endif; ?>
-        <p id="utility_nav">
-          <?php
-          /*
-          echo $this->Html->tag('span', $user['User']['username']);
-          echo $this->Html->link(__('Logout',true), array('controller'=>'users', 'action'=>'logout', 'admin'=>false));
-          */
-          ?>
-          </p>
+        <?php echo $this->element('user_info', array(), array('plugin' => 'ActiveAdmin')); ?>
       </div>
       <div id="title_bar">
         <span class="breadcrumb">
