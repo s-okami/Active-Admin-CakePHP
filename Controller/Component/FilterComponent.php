@@ -11,17 +11,17 @@
  *
  */
 
-class FilterComponent extends Object {
+class FilterComponent extends Component {
     /**
      * fields which will replace the regular syntax in where i.e. field = 'value'
      */
-	var $fieldFormatting    = array(
-		"string"=>array("%1\$s LIKE", "%2\$s%%"),
-		"text"=>array("%1\$s LIKE", "%2\$s%%"),
-		"checkbox"=>array("%1\$s =>", "%2\$s%%"),
-		"date"=>array("DATE_FORMAT(%1\$s, '%%d-%%m-%%Y')", "%2\$s"),
-		"datetime"=>array("DATE_FORMAT(%1\$s, '%%d-%%m-%%Y')", "%2\$s")
-	);
+  var $fieldFormatting    = array(
+    "string"=>array("%1\$s LIKE", "%2\$s%%"),
+    "text"=>array("%1\$s LIKE", "%2\$s%%"),
+    "checkbox"=>array("%1\$s =>", "%2\$s%%"),
+    "date"=>array("DATE_FORMAT(%1\$s, '%%d-%%m-%%Y')", "%2\$s"),
+    "datetime"=>array("DATE_FORMAT(%1\$s, '%%d-%%m-%%Y')", "%2\$s")
+  );
     /**
      * extra identifier (if needed to specify extra location (like requestAction))
      */
@@ -101,14 +101,16 @@ class FilterComponent extends Object {
      */
     function _prepareFilter(&$controller){
         if(isset($controller->data)){
-            foreach($controller->data as $model=>$fields){
+            $thisController = $controller->data;
+            foreach($thisController as $model=>$fields){
                 foreach($fields as $key=>$field){
                     if($field == ''){
-                        unset($controller->data[$model][$key]);
+                        unset($thisController[$model][$key]);
                     }
                 }
             }
-            $controller->Session->write($controller->name.'.'.$controller->params['action'].$this->identifier, $controller->data);
+             
+            $controller->Session->write($controller->name.'.'.$controller->params['action'].$this->identifier, $thisController);
         }
         $filter = $controller->Session->read($controller->name.'.'.$controller->params['action'].$this->identifier);
         $controller->data = $filter;
