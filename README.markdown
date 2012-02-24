@@ -83,4 +83,5 @@ or simply added to the app/Controller/AppController.php file for all controllers
 
 If you're experiencing some issues with the filter, make sure that the display field is set in your model:
     var $displayField = "title";
+    
 The above would set the filter search on the title field of the model.
