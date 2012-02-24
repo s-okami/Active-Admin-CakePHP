@@ -22,17 +22,19 @@ class ActiveAdminAppController extends AppController {
     
     function beforeFilter(){
         parent::beforeFilter();
-        $this->loadModel('ActiveAdmin.Dashboard');
-        $adminMenu = $this->Dashboard->find('all',array('condition'=>array('Dashboard.name' => 'nav_menu')));
-        $modelName = Inflector::camelize(Inflector::singularize($this->request->params['controller']));
-        $pluginName = Inflector::camelize($this->request->params['plugin']);
-        if(!empty($pluginName)){
-            $this->loadModel($pluginName.".".$modelName);
-        }else{
-            $this->loadModel($modelName);
+        if(gettype($this->Dashboard) == NULL){
+          $this->loadModel('ActiveAdmin.Dashboard');
+          $adminMenu = $this->Dashboard->find('all',array('condition'=>array('Dashboard.name' => 'nav_menu')));
+          $modelName = Inflector::camelize(Inflector::singularize($this->request->params['controller']));
+          $pluginName = Inflector::camelize($this->request->params['plugin']);
+          if(!empty($pluginName)){
+              $this->loadModel($pluginName.".".$modelName);
+          }else{
+              $this->loadModel($modelName);
+          }
+          $displayField = $this->{$modelName}->displayField; 
+          $this->set(compact('adminMenu','displayField','modelName'));
         }
-        $displayField = $this->{$modelName}->displayField; 
-        $this->set(compact('adminMenu','displayField','modelName'));
     }
 }
 
