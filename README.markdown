@@ -7,6 +7,7 @@ Based on Active Admin for RoR (http://activeadmin.info/). This plugin for CakePH
 1 - Clone the project as "ActiveAdmin" into your apps plugins-folder (app/Plugin/)
 
 2 - Enable the plugin in your app/Config/bootstrap.php file
+    
     CakePlugin::load(array('ActiveAdmin' => array('routes' => true));
 
 3 - Open (or create) your app/Controller/AppController.php file and add the following:
@@ -75,13 +76,16 @@ or simply added to the app/Controller/AppController.php file for all controllers
     </table>
 
 7 - Create the table for ActiveAdmin using the schema shell:
+    
     ./Console/cake schema create --plugin ActiveAdmin --name dashboard
 
 8 - Adding Admin Menu controller items can be done via the provided console shell (eg. adding Posts or the Categories from Blog plugin)
+    
     ./Console/cake ActiveAdmin.resource Posts
     ./Console/cake ActiveAdmin.resource Blog.Categories
 
 If you're experiencing some issues with the filter, make sure that the display field is set in your model:
+    
     var $displayField = "title";
     
 The above would set the filter search on the title field of the model.
