@@ -1,4 +1,5 @@
 <div id="index_footer">
+<?php if(isset($this->Paginator)): ?>
 <nav class="pagination">
   <?php if($this->Paginator->hasPrev()):?>
   <span class="first">
@@ -18,5 +19,6 @@
   </span>
   <?php endif; ?>
 </nav>
+<?php endif; ?>
 </div>
 

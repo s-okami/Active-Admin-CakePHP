@@ -1,4 +1,4 @@
-# Active Admin for CakePHP 2.0 (With 2.1 plugin layout functionality) - 2.1 compliant
+# Active Admin for CakePHP 2.1 -- 2.0 compliance may need some tweaks 
 
 Based on Active Admin for RoR (http://activeadmin.info/). This plugin for CakePHP gives you the same administration interface for the PHP framework. It also uses Nik Chankov's Filter component (http://nik.chankov.net).
 
@@ -8,7 +8,7 @@ Based on Active Admin for RoR (http://activeadmin.info/). This plugin for CakePH
 
 2 - Enable the plugin in your app/Config/bootstrap.php file
     
-    CakePlugin::load(array('ActiveAdmin' => array('routes' => true));
+    CakePlugin::load(array('ActiveAdmin' => array('routes' => true)));
 
 3 - Open (or create) your app/Controller/AppController.php file and add the following:
 
