@@ -1,3 +1,4 @@
+<?php if($displayField): ?>
 <div class="panel sidebar_section" id="filters_sidebar_section">
   <h3>Filters</h3>
   <div class="panel_contents">
@@ -23,4 +24,4 @@
     </form>
   </div>
 </div>
-
+<?php endif; ?>
