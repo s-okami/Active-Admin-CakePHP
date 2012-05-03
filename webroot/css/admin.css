@@ -386,3 +386,7 @@ table.dashboard .dashboard_section hr{border:none;border-bottom:1px solid #E8E8E
 .scopes .scopes_seperator{display:none;}
 .columns{clear:both;padding:0;}
 .columns .column{float:left;}
+
+/** Notices and Errors **/
+div.message,div.success{clear:both;color:#fff;font-size:140%;font-weight:700;background:#6bca81;margin:0 0 1em;padding:5px}
+div.error-message{clear:both;color:#fff;font-size:120%;font-weight:700;background:#EB4E4E;margin:0 0 1em;padding:5px}
