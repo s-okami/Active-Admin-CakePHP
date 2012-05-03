@@ -10,3 +10,4 @@
  */
 
 Router::connect('/admin', array('plugin' => 'active_admin', 'controller' => 'dashboard', 'action' => 'index', 'admin' => true));
+Router::connect('/admin/apis/:action/*', array('plugin' => 'active_admin', 'controller' => 'apis', 'admin' => true));

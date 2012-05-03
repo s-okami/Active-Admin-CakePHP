@@ -36,7 +36,7 @@
           <?php if($this->params['action'] == 'admin_index' || $this->params['action'] == 'admin_view'): ?>
           <span class="action_item"><?php echo $this->Html->link('New '. Inflector::singularize($this->name), array('controller'=>$this->params['controller'], 'action'=>'admin_add'))?></span>
           <?php endif; ?>
-          <span class="action_item"><?php echo $this->Html->link('Clear cache', array('controller'=>'apis', 'action'=>'admin_clear_cache'))?></span>
+          <span class="action_item"><?php echo $this->Html->link('Clear cache', array('plugin'=>'active_admin', 'controller'=>'apis', 'action'=>'clear_cache',$this->params['plugin'],$this->params['controller']))?></span>
         </div>
       </div>
       <div class="with_sidebar" id="active_admin_content">
