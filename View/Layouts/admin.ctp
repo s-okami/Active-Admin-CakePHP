@@ -17,20 +17,13 @@
     <div id="wrapper">
       <div id="header">
         <h1 id="site_title"><?php echo $this->Html->link('Site', "/"); ?></h1>
-        <?php if($adminMenu = $this->requestAction(array('plugin' => 'active_admin', 'controller' => 'dashboard', 'action' => 'menu'))){ ?>
-        <ul class="tabbed_navigation" id="tabs">
-            <?php foreach($adminMenu as $menuItem):
-                $menuTitleArray = explode(".",$menuItem['Dashboard']['value']);
-                if(sizeof($menuTitleArray) == 1 || $menuTitleArray[0] == $menuTitleArray[1]){
-                     $menuTitle = $menuTitleArray[0];
-                }else {
-                    $menuTitle = $menuTitleArray[0]." ".$menuTitleArray[1];
-                }
-              ?>
-            <li<?php if($this->params['controller'] == $menuItem['Dashboard']['value']) echo " class='current'"?>><?php echo $this->Html->link($menuTitle, DS . 'admin' . DS . str_replace(".",DS,strtolower($menuItem['Dashboard']['value']))); ?></li>
-            <?php endforeach; ?>
-        </ul>
-        <?php endif; ?>
+        <?php if($this->params['action'] !== 'admin_login' && $adminMenu = $this->requestAction(array('plugin' => 'active_admin', 'controller' => 'dashboard', 'action' => 'menu'))){ ?>
+            <ul class="tabbed_navigation" id="tabs">
+                <?php foreach($adminMenu as $menuItem):?>
+                <li<?php if($this->params['controller'] == $menuItem['Dashboard']['url']['controller']) echo " class='current'"?>><?php echo $this->Html->link(Inflector::humanize(implode(' ', $menuItem['Dashboard']['url'])), $menuItem['Dashboard']['url']); ?></li>
+                <?php endforeach; ?>
+            </ul>
+        <? } ?>
         <?php echo $this->element('user_info', array(), array('plugin' => 'ActiveAdmin')); ?>
       </div>
       <div id="title_bar">
