@@ -1,11 +1,14 @@
-<?php if($displayField): ?>
+<?php
+  $params_passed_clean = $this->passedArgs;
+  unset($params_passed_clean['page']);
+  $modelName = Inflector::camelize(Inflector::singularize($this->request->params['controller']));
+  $model =& ClassRegistry::init($modelName);
+  $displayField = $model->displayField;
+  if ($displayField){
+?>
 <div class="panel sidebar_section" id="filters_sidebar_section">
   <h3>Filters</h3>
   <div class="panel_contents">
-    <?php
-    $params_passed_clean = $this->passedArgs;
-    unset($params_passed_clean['page']);
-    ?>
     <?php echo $this->Form->create($modelName, array('url'=>array_merge($params_passed_clean, array('action'=>'index')),'class'=>'filter_form'));?>
       <div class="filter_form_field filter_string">
         <label> <?php echo __('Search %s', Inflector::humanize($displayField))?></label>
@@ -24,4 +27,5 @@
     </form>
   </div>
 </div>
-<?php endif; ?>
+<?php } ?>
+
