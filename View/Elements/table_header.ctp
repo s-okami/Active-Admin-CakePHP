@@ -1,6 +1,6 @@
 <thead>           
   <tr>
-    <?php foreach($keys as $key):?>
+    <?php foreach($keys as $ktitle=>$key):?>
       <?php
       $class = "sortable";
       if(isset($this->params['named']['sort']) and $this->params['named']['sort'] == $key) {
@@ -12,7 +12,8 @@
       }
       ?>
       <?php $this->Paginator->options(array('url' => $this->passedArgs));?>
-    <th class="<?php echo $class ?>"><?php echo $this->Paginator->sort($key);?></th>
+      <?php $thTitle = is_numeric($ktitle)? ucfirst($key) : $ktitle; ?>
+    <th class="<?php echo $class ?>"><?php echo $this->Paginator->sort($key, $thTitle);?></th>
     <?php endforeach; ?>
     <th></th>
   </tr>

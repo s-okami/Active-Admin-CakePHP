@@ -51,7 +51,7 @@ or simply added to the app/Controller/AppController.php file for all controllers
 6 - And update your View/(Controller)/admin_index.ctp views, using a table-header element that enable table-sorting:
 
     <table cellpadding="0" cellspacing="0">
-    <?php echo $this->element('table_header', array('keys'=>array('id', 'title', 'slug','created', 'modified')), array('plugin'=>'ActiveAdmin')); ?>
+    <?php echo $this->element('table_header', array('keys'=>array('id', 'title', 'label' => 'slug','created', 'modified')), array('plugin'=>'ActiveAdmin')); ?>
       <?php
       $i = 0;
       foreach ($posts as $post):
