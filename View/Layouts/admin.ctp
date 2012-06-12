@@ -23,7 +23,7 @@
                 <li<?php if($this->params['controller'] == $menuItem['Dashboard']['url']['controller']) echo " class='current'"?>><?php echo $this->Html->link(Inflector::humanize(implode(' ', $menuItem['Dashboard']['url'])), array_merge($menuItem['Dashboard']['url'],array('action'=>'index'))); ?></li>
                 <?php endforeach; ?>
             </ul>
-        <? } ?>
+        <?php } ?>
         <?php echo $this->element('user_info', array(), array('plugin' => 'ActiveAdmin')); ?>
       </div>
       <div id="title_bar">
