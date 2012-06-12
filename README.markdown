@@ -1,6 +1,9 @@
 # Active Admin for CakePHP 2.1 -- 2.0 compliance may need some tweaks 
 
 Based on Active Admin for RoR (http://activeadmin.info/). This plugin for CakePHP gives you the same administration interface for the PHP framework. It also uses Nik Chankov's Filter component (http://nik.chankov.net).
+This install assumes that you've setup your prefix to be admin using the following routing prefix:
+
+    Configure::write('Routing.prefixes', array('admin'));
 
 ## Install
 
