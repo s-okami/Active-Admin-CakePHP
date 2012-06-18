@@ -39,7 +39,7 @@
           <span class="action_item"><?php echo $this->Html->link('Clear cache', array('plugin'=>'active_admin', 'controller'=>'apis', 'action'=>'clear_cache',$this->params['plugin'],$this->params['controller']))?></span>
         </div>
       </div>
-      <div class="with_sidebar" id="active_admin_content">
+      <div <?php echo ($this->params['controller'] == 'dashboard')? 'class="without_sidebar" ':''?>id="active_admin_content">
         <div id="main_content_wrapper">
           <div id="main_content">
             <?php echo $this->Session->flash(); ?>
