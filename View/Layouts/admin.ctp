@@ -28,7 +28,7 @@
       </div>
       <div id="title_bar">
         <span class="breadcrumb">
-          <?php echo $this->Html->link('Admin', array('controller'=>'apis', 'action'=>'index')); ?>
+          <?php echo $this->Html->link('Admin', array('plugin'=>'active_admin', 'controller'=>'dashboard', 'action'=>'index')); ?>
           <span class="breadcrumb_sep">/</span>
         </span>
         <h1 id="page_title"><?php echo $this->Html->link($this->name, array('controller'=>$this->params['controller'], 'action'=>'index')); ?></h1>
