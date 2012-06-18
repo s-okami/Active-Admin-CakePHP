@@ -33,7 +33,7 @@
         </span>
         <h1 id="page_title"><?php echo $this->Html->link($this->name, array('controller'=>$this->params['controller'], 'action'=>'index')); ?></h1>
         <div class="action_items">
-          <?php if($this->params['action'] == 'admin_index' || $this->params['action'] == 'admin_view'): ?>
+          <?php if(($this->params['action'] == 'admin_index' || $this->params['action'] == 'admin_view') && $this->params['controller'] != 'dashboard'): ?>
           <span class="action_item"><?php echo $this->Html->link('New '. Inflector::singularize($this->name), array('controller'=>$this->params['controller'], 'action'=>'admin_add'))?></span>
           <?php endif; ?>
           <span class="action_item"><?php echo $this->Html->link('Clear cache', array('plugin'=>'active_admin', 'controller'=>'apis', 'action'=>'clear_cache',$this->params['plugin'],$this->params['controller']))?></span>
