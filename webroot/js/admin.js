@@ -9,7 +9,7 @@ $(function(){
 		$(this).parents('form').find('input[type="submit"]').click();
       return false;
     });
-	$('.thickbox,.lightbox').nyroModal();
+//	$('.thickbox,.lightbox').nyroModal();
     
     // AJAX Comments
     $('form#admin_note_new').submit(function() {
