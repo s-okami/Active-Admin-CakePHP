@@ -20,7 +20,7 @@
         <?php if($this->params['action'] !== 'admin_login' && $adminMenu = $this->requestAction(array('plugin' => 'active_admin', 'controller' => 'dashboard', 'action' => 'menu'))){ ?>
             <ul class="tabbed_navigation" id="tabs">
                 <?php foreach($adminMenu as $menuItem):?>
-                <li<?php if($this->params['controller'] == $menuItem['Dashboard']['url']['controller']) echo " class='current'"?>><?php echo $this->Html->link(Inflector::humanize(implode(' ', $menuItem['Dashboard']['url'])), array_merge($menuItem['Dashboard']['url'],array('action'=>'index'))); ?></li>
+                <li<?php if($this->params['controller'] == $menuItem['Dashboard']['url']['controller']) echo " class='current'"?>><?php echo $this->Html->link($menuItem['Dashboard']['display_title'], array_merge($menuItem['Dashboard']['url'],array('action'=>'index'))); ?></li>
                 <?php endforeach; ?>
             </ul>
         <?php } ?>
