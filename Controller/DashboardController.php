@@ -21,6 +21,9 @@ class DashboardController extends ActiveAdminAppController {
                     array('plugin', 'controller'),
                     array_pad(explode('.', Inflector::underscore($menuItem['Dashboard']['value'])), -2, '')
                 );
+                if(empty($adminMenu[$idx]['Dashboard']['display_title'])){
+                    $adminMenu[$idx]['Dashboard']['display_title'] = trim(Inflector::humanize(implode(' ', $adminMenu[$idx]['Dashboard']['url'])));
+                }
             }
             return $adminMenu;
         } else{
