@@ -63,6 +63,7 @@ class DashboardSchema extends CakeSchema {
     'value' => array('type' => 'text', 'null' => false, 'default' => NULL, 'collate' => 'utf8_unicode_ci', 'comment' => 'Value of the variable', 'charset' => 'utf8'),
     'description' => array('type' => 'string', 'null' => true, 'default' => NULL, 'collate' => 'utf8_unicode_ci', 'comment' => 'Description of the variable', 'charset' => 'utf8'),
     'type' => array('type' => 'string', 'null' => true, 'default' => NULL, 'collate' => 'utf8_unicode_ci', 'comment' => 'Type of the variable', 'charset' => 'utf8'),
+    'display_title' => array('type' => 'string', 'null' => true, 'default' => NULL, 'collate' => 'utf8_unicode_ci', 'comment' => 'Variable display title', 'charset' => 'utf8'),
     'display_order' => array('type' => 'integer', 'null' => false, 'default' => '0', 'collate' => NULL, 'comment' => 'Variable order placement'),
     'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1))
   );
