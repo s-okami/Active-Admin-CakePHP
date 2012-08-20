@@ -55,6 +55,12 @@ This install assumes that you've setup your prefix to be admin using the followi
 or simply added to the app/Controller/AppController.php file for all controllers to use
 
     var $components = array('ActiveAdmin.Filter');
+    
+For filters to work in all plugins, modify the first line of your AppController to have:
+    
+    App::uses('Controller', 'Controller');
+    App::uses('File', 'Utility');
+    App::uses('Folder', 'Utility');
 
 5 - For the admin_index function:
 
