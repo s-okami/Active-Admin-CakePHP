@@ -48,6 +48,8 @@ This install assumes that you've setup your prefix to be admin using the followi
         // Default deny
         return false;
     }
+    
+As you can see above, ActiveAdmin uses the user login functionality, and this will require the AuthComponent to be enabled
 
 ### Prepare your app's controllers
 
