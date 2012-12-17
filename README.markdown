@@ -67,7 +67,6 @@ For filters to work in all plugins, modify the first line of your AppController 
 5 - For the admin_index function:
 
     function admin_index() {
-        $this->paginate['Post']['order'] = array('Post.date' => 'desc');
         $this->Post->recursive = 0;
         // Add this 
         $filter = $this->Filter->process($this);
