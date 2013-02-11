@@ -5,6 +5,8 @@ This install assumes that you've setup your prefix to be admin using the followi
 
     Configure::write('Routing.prefixes', array('admin'));
 
+Essentially this will create the backend at a url like: http://your-domain-here.com/admin
+
 ## Install
 
 1 - Clone the project as "ActiveAdmin" into your apps plugins-folder (app/Plugin/)
@@ -49,7 +51,10 @@ This install assumes that you've setup your prefix to be admin using the followi
         return false;
     }
     
-As you can see above, ActiveAdmin uses the user login functionality, and this will require the AuthComponent to be enabled
+As you can see above, ActiveAdmin uses the user login functionality, and this will require the Auth Component to be enabled in your AppController:
+
+    var $components = array('Auth');
+
 
 ### Prepare your app's controllers
 
