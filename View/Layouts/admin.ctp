@@ -78,6 +78,7 @@
           ?>
           
         </div>
+        <div class="clear"></div>
       </div>
       <div id="footer">
         <p>Base on <a href="http://www.activeadmin.info">Active Admin</a> 0.3.0</p>
