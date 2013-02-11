@@ -33,6 +33,7 @@ p .left{margin:1.5em 1.5em 1.5em 0;padding:0;}
 p .right{margin:1.5em 0 1.5em 1.5em;padding:0;}
 .left{float:left !important;}
 .right{float:right !important;}
+.clear{clear:both;}
 blockquote{margin:1.5em;color:#666;font-style:italic;}
 strong,dfn{font-weight:bold;}
 em,dfn{font-style:italic;}
@@ -236,6 +237,7 @@ body{font-family:Helvetica,Arial,sans-serif;line-height:150%;font-size:72%;backg
 #active_admin_content{margin:0;padding:25px 30px;}
 #active_admin_content #main_content_wrapper{float:left;width:100%;margin-bottom:15px;}
 #active_admin_content #main_content_wrapper #main_content{margin-right:300px;}
+#active_admin_content.without_sidebar #main_content_wrapper {float:none;}
 #active_admin_content.without_sidebar #main_content_wrapper #main_content{margin-right:0;}
 #active_admin_content #sidebar{float:left;width:270px;margin-left:-270px;}
 
