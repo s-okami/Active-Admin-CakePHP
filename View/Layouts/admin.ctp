@@ -45,12 +45,12 @@
             <?php echo $this->Session->flash(); ?>
             <?php echo $this->Session->flash('auth'); ?>
           <?php 
-          if($this->params['action'] == 'admin_index' && $this->params['controller'] != 'dashboard') {
+          if(isset($this->Paginator) && $this->params['controller'] != 'dashboard') {
             echo $this->element('paging_info', array(), array('plugin'=>'ActiveAdmin'));
           }
           echo $this->fetch('content');
           
-          if($this->params['action'] == 'admin_index' && $this->params['controller'] != 'dashboard') {
+          if(isset($this->Paginator) && $this->params['controller'] != 'dashboard') {
             echo $this->element('paging', array(), array('plugin'=>'ActiveAdmin'));
           }
           
