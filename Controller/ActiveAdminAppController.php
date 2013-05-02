@@ -8,6 +8,8 @@
  * @copyright Copyright 2009-2010, Cake Development Corporation (http://cakedc.com)
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
+App::uses('File', 'Utility');
+App::uses('Folder', 'Utility');
 
 /**
  * ActiveAdmin Plugin AppController
@@ -16,7 +18,25 @@
  */
 
 class ActiveAdminAppController extends AppController {
-    var $helpers = array('Form','Html','Session','Js'=> array('Jquery'), 'Text', 'Time');
     
+    public $components = array(
+        'ActiveAdmin.Filter',
+        'Session',
+        'Auth' => array(
+            'loginRedirect' => array('controller' => '', 'action' => 'index'),
+            'logoutRedirect' => array('controller' => 'users', 'action' => 'login')
+        )
+    );
+    
+    public $helpers = array('Form','Html','Session','Js'=> array('Jquery'), 'Text', 'Time');
+    
+    public function beforeFilter() {
+        parent::beforeFilter();
+        
+        /*
+            管理画面用のスタイルを当てます
+        */
+        $this->layout = "ActiveAdmin.admin";
+    }
 }
 

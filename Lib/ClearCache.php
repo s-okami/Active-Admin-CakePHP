@@ -94,6 +94,5 @@ class ClearCache {
 
 		return compact('files', 'engines');
 	}
-
 }
 ?>

@@ -3,10 +3,10 @@ class ResourceShell extends AppShell {
     public $uses = array('ActiveAdmin.Dashboard');
     
     public function main() {
-        if(empty($this->args)){
+        if (empty($this->args)){
             $this->out('Usage: ActiveAdmin.resource [MyControllerName] or [Plugin.MyControllerName]');
             $this->out('eg. ./Console/cake ActiveAdmin.resource Posts');
-        }else{
+        } else {
             foreach($this->args as $myController){
                 $myDash = $this->Dashboard->findByValue($myController);
                 if(!empty($myDash)){
