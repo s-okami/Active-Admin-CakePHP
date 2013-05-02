@@ -15,61 +15,9 @@ Essentially this will create the backend at a url like: http://your-domain-here.
     
     CakePlugin::load(array('ActiveAdmin' => array('routes' => true)));
 
-3 - Open (or create) your app/Controller/AppController.php file and add the following:
-
-    /**
-     * Before Filter method
-     *
-     * @return void
-     */
-    function beforeFilter() {
-        if (isset($this->params['prefix']) && $this->params['prefix'] == 'admin') {
-            $this->layout = 'ActiveAdmin.admin';
-            // Auth is used here and checked for a valid user
-            if ($user = $this->Auth->user()){
-                if(!$this->isAuthorized($user)){
-                    $this->redirect($this->Auth->logout());
-                }
-            }
-        }else{
-            $this->Auth->allow('*');
-        }
-    }
-
-    /**
-     * User Auth check method
-     *
-     * @return void
-     */    
-    public function isAuthorized($user) {
-        // Admin can access every action
-        if (isset($user['role']) && $user['role'] === 'admin') {
-            return true;
-        }
-    
-        // Default deny
-        return false;
-    }
-    
-As you can see above, ActiveAdmin uses the user login functionality, and this will require the Auth Component to be enabled in your AppController:
-
-    var $components = array('Auth');
-
-
 ### Prepare your app's controllers
 
-4 - The Filter component is needed for filtering of records - This can be added on a per controller basis
-or simply added to the app/Controller/AppController.php file for all controllers to use
-
-    var $components = array('ActiveAdmin.Filter');
-    
-For filters to work in all plugins, modify the first line of your AppController to have:
-    
-    App::uses('Controller', 'Controller');
-    App::uses('File', 'Utility');
-    App::uses('Folder', 'Utility');
-
-5 - For the admin_index function:
+3 - For the admin_index function:
 
     function admin_index() {
         $this->Post->recursive = 0;
@@ -78,7 +26,7 @@ For filters to work in all plugins, modify the first line of your AppController 
         $this->set('posts', $this->paginate(null, $filter));
     }
 
-6 - And update your View/(Controller)/admin_index.ctp views, using a table-header element that enable table-sorting:
+4 - And update your View/(Controller)/admin_index.ctp views, using a table-header element that enable table-sorting:
 
     <table cellpadding="0" cellspacing="0">
     <?php echo $this->element('table_header', array('keys'=>array('id', 'title', 'label' => 'slug','created', 'modified')), array('plugin'=>'ActiveAdmin')); ?>
@@ -105,11 +53,11 @@ For filters to work in all plugins, modify the first line of your AppController 
     <?php endforeach; ?>
     </table>
 
-7 - Create the table for ActiveAdmin using the schema shell:
+5 - Create the table for ActiveAdmin using the schema shell:
     
     ./Console/cake schema create --plugin ActiveAdmin --name dashboard
 
-8 - Adding Admin Menu controller items can be done via the provided console shell (eg. adding Posts or the Categories from Blog plugin)
+6 - Adding Admin Menu controller items can be done via the provided console shell (eg. adding Posts or the Categories from Blog plugin)
     
     ./Console/cake ActiveAdmin.resource Posts
     ./Console/cake ActiveAdmin.resource Blog.Categories
