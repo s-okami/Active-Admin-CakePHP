@@ -57,6 +57,8 @@ Essentially this will create the backend at a url like: http://your-domain-here.
     
     ./Console/cake schema create --plugin ActiveAdmin --name dashboard
 
+And run the Config/Schema/users.sql
+
 6 - Adding Admin Menu controller items can be done via the provided console shell (eg. adding Posts or the Categories from Blog plugin)
     
     ./Console/cake ActiveAdmin.resource Posts
