@@ -2,7 +2,7 @@
   $params_passed_clean = $this->passedArgs;
   unset($params_passed_clean['page']);
   $modelName = Inflector::camelize(Inflector::singularize($this->request->params['controller']));
-  $model =& ClassRegistry::init($modelName);
+  $model = ClassRegistry::init($modelName);
   $displayField = $model->displayField;
   if ($displayField){
 ?>
@@ -22,7 +22,7 @@
       </div>
       <div class="buttons">
         <?php echo $this->Form->submit(__('Filter'), array('div'=>false, 'id'=>'SubmitBtn')) ?>
-        <?php echo $this->Html->link(__('Delete Filters'), array('action'=>'index'), array('class'=>'clear_filters_btn clear_action')) ?>
+        <?php echo $this->Html->link(__('Clear Filters'), array('action'=>'index'), array('class'=>'clear_filters_btn clear_action')) ?>
       </div>
     </form>
   </div>

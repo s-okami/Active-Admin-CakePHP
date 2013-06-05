@@ -9,6 +9,8 @@ class DashboardController extends ActiveAdminAppController {
     public $name = 'Dashboard';
     public $helpers = array('Html', 'Form');
 
+    //TODO: Dashboard settings page (ability to add/remove controller links
+
     public function admin_index() {
         
     }

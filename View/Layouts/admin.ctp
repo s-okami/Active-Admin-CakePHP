@@ -29,8 +29,7 @@
             <?php endif; ?>
             <?php echo $this->element('user_info', array(), array('plugin' => 'ActiveAdmin')); ?>
         </div>
-        
-        
+
         <div id="title_bar">
             <span class="breadcrumb">
                 <?php echo $this->Html->link('Admin', array('plugin'=>'active_admin', 'controller'=>'dashboard', 'action'=>'index')); ?>
@@ -41,53 +40,69 @@
                 <span class="action_item"><?php echo $this->Html->link('Clear cache', array('plugin'=>'active_admin', 'controller'=>'apis', 'action'=>'clear_cache',$this->params['plugin'],$this->params['controller']))?></span>
             </div>
         </div>
-        
-        <div <?php echo ($this->params['controller'] == 'dashboard')? 'class="without_sidebar" ':''?>id="active_admin_content">
+
+        <div <?php echo ($this->params['controller'] == 'dashboard')? 'class="without_sidebar" ':'class="with_sidebar"'?> id="active_admin_content">
             <div id="main_content_wrapper">
                 <div id="main_content">
                     <?php echo $this->Session->flash(); ?>
                     <?php echo $this->Session->flash('auth'); ?>
-                <?php 
+
+                <!--Pagination text above table eg. (Displaying X-X of X)-->
+                <?php
                 if(isset($this->Paginator) && $this->params['controller'] != 'dashboard') {
                     echo $this->element('paging_info', array(), array('plugin'=>'ActiveAdmin'));
                 }
+                ?>
+
+                <!--Scopes-->
+                <div class="table_tools">
+                    <?php echo $this->element('scopes', array(), array('plugin' => 'ActiveAdmin')); ?>
+                </div>
+
+                <!--content as rendered by controller methods-->
+                <?php
                 echo $this->fetch('content');
-                
+
+                //Pagination at the bottom left of content area (has <Prev and next> links)
                 if(isset($this->Paginator) && $this->params['controller'] != 'dashboard') {
                     echo $this->element('paging', array(), array('plugin'=>'ActiveAdmin'));
                 }
-                
                 ?>
-                </div>
             </div>
+            <!-- end main_content -->
+            </div>
+            <!-- end main_content_wrapper -->
+            <!--Sidebar with filters-->
             <div id="sidebar">
-                <?php 
+                <?php
                 if($this->params['action'] == 'admin_index' && $this->params['controller'] != 'dashboard') {
                     $file = new File(APP . 'View' . DS . 'Elements' . DS . strtolower($this->name) . '_filter.ctp');
-                    if ($file->exists()) { 
+                    if ($file->exists()) {
                         echo $this->element(strtolower($this->name) . '_filter');
                     } else {
                         echo $this->element('sidebar_filter', array(), array('plugin'=>'ActiveAdmin'));
                     }
                 }
                 if($this->params['action'] == 'admin_add' || $this->params['action'] == 'admin_edit') {
-                    
+
                     $file = new File(APP . 'View' . DS . 'Elements' . DS . strtolower($this->name) . '_edit_info.ctp');
-                    if ($file->exists()) { 
+                    if ($file->exists()) {
                         echo $this->element(strtolower($this->name) . '_edit_info');
                     }
                 }
-                
+
                 ?>
-                
             </div>
+            <!-- end sidebar -->
+
             <div class="clear"></div>
-        </div>
         <div id="footer">
             <p>Base on <a href="http://www.activeadmin.info">Active Admin</a> 0.3.0</p>
         </div>
     </div>
-    <?php echo $this->element('sql_dump'); ?>
+    <!-- end active_admin_wrapper -->
+
+        <?php echo $this->element('sql_dump'); ?>
 </body>
 </html>
 

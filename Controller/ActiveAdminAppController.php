@@ -17,22 +17,32 @@ App::uses('Folder', 'Utility');
  * @package active_admin
  */
 
-class ActiveAdminAppController extends AppController {
-    
+class ActiveAdminAppController extends AppController
+{
+
+    //TODO: support for additional filters (via custom model variable)
+
     public $components = array(
         'ActiveAdmin.Filter',
         'Session',
-        'Auth' => array(
-            'loginRedirect' => array('controller' => '', 'action' => 'index'),
-            'logoutRedirect' => array('controller' => 'users', 'action' => 'login')
-        )
     );
-    
-    public $helpers = array('Form','Html','Session','Js'=> array('Jquery'), 'Text', 'Time');
-    
-    public function beforeFilter() {
+
+    public $helpers = array('Form', 'Html', 'Session', 'Js' => array('Jquery'), 'Text', 'Time');
+
+    public function beforeFilter()
+    {
         parent::beforeFilter();
-        
+
+        //User internal auth if Authake is not loaded
+        $logged = CakePlugin::loaded('Authake');
+        if (!isset($logged) && $logged) {
+            //Add more components
+            $this->components += array('Auth' => array(
+                'loginRedirect' => array('controller' => '', 'action' => 'index'),
+                'logoutRedirect' => array('controller' => 'users', 'action' => 'login')
+            ));
+        }
+
         /*
             管理画面用のスタイルを当てます
         */
