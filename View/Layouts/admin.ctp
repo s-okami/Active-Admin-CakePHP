@@ -17,92 +17,98 @@
     <![endif]-->
 </head>
 <body>
-    <div id="wrapper">
-        <div id="header">
-            <h1 id="site_title"><?php echo $this->Html->link('Site', "/"); ?></h1>
-            <?php if($this->params['action'] !== 'admin_login' && $adminMenu = $this->requestAction(array('plugin' => 'active_admin', 'controller' => 'dashboard', 'action' => 'menu'))): ?>
+<div id="wrapper">
+    <div id="header">
+        <h1 id="site_title"><?php echo $this->Html->link('Site', "/"); ?></h1>
+        <?php if ($this->params['action'] !== 'admin_login' && $adminMenu = $this->requestAction(array('plugin' => 'active_admin', 'controller' => 'dashboard', 'action' => 'menu'))): ?>
             <ul class="tabbed_navigation" id="tabs">
-                <?php foreach($adminMenu as $menuItem):?>
-                <li<?php if($this->params['controller'] == $menuItem['Dashboard']['url']['controller']) echo " class='current'"?>><?php echo $this->Html->link($menuItem['Dashboard']['display_title'], array_merge($menuItem['Dashboard']['url'],array('action'=>'index'))); ?></li>
+                <?php foreach ($adminMenu as $menuItem): ?>
+                    <li<?php if ($this->params['controller'] == $menuItem['Dashboard']['url']['controller']) echo " class='current'" ?>><?php echo $this->Html->link($menuItem['Dashboard']['display_title'], array_merge($menuItem['Dashboard']['url'], array('action' => 'index'))); ?></li>
                 <?php endforeach; ?>
             </ul>
-            <?php endif; ?>
-            <?php echo $this->element('user_info', array(), array('plugin' => 'ActiveAdmin')); ?>
-        </div>
+        <?php endif; ?>
+        <?php echo $this->element('user_info', array(), array('plugin' => 'ActiveAdmin')); ?>
+    </div>
 
-        <div id="title_bar">
+    <div id="title_bar">
             <span class="breadcrumb">
-                <?php echo $this->Html->link('Admin', array('plugin'=>'active_admin', 'controller'=>'dashboard', 'action'=>'index')); ?>
+                <?php echo $this->Html->link('Admin', array('plugin' => 'active_admin', 'controller' => 'dashboard', 'action' => 'index')); ?>
                 <span class="breadcrumb_sep">/</span>
             </span>
-            <h1 id="page_title"><?php echo $this->Html->link($this->name, array('controller'=>$this->params['controller'], 'action'=>'index')); ?></h1>
-            <div class="action_items">
-                <span class="action_item"><?php echo $this->Html->link('Clear cache', array('plugin'=>'active_admin', 'controller'=>'apis', 'action'=>'clear_cache',$this->params['plugin'],$this->params['controller']))?></span>
-            </div>
+
+        <h1 id="page_title"><?php echo $this->Html->link($this->name, array('controller' => $this->params['controller'], 'action' => 'index')); ?></h1>
+
+        <div class="action_items">
+            <span
+                class="action_item"><?php echo $this->Html->link('Clear cache', array('plugin' => 'active_admin', 'controller' => 'apis', 'action' => 'clear_cache', $this->params['plugin'], $this->params['controller'])) ?></span>
         </div>
+    </div>
 
-        <div <?php echo ($this->params['controller'] == 'dashboard')? 'class="without_sidebar" ':'class="with_sidebar"'?> id="active_admin_content">
-            <div id="main_content_wrapper">
-                <div id="main_content">
-                    <?php echo $this->Session->flash(); ?>
-                    <?php echo $this->Session->flash('auth'); ?>
-
-                <!--Pagination text above table eg. (Displaying X-X of X)-->
-                <?php
-                if(isset($this->Paginator) && $this->params['controller'] != 'dashboard') {
-                    echo $this->element('paging_info', array(), array('plugin'=>'ActiveAdmin'));
-                }
-                ?>
+    <div <?php echo ($this->params['controller'] == 'dashboard') ? 'class="without_sidebar" ' : 'class="with_sidebar"' ?>
+        id="active_admin_content">
+        <div id="main_content_wrapper">
+            <div id="main_content">
+                <?php echo $this->Session->flash(); ?>
+                <?php echo $this->Session->flash('auth'); ?>
 
                 <!--Scopes-->
                 <div class="table_tools">
                     <?php echo $this->element('scopes', array(), array('plugin' => 'ActiveAdmin')); ?>
                 </div>
 
+                <!--Pagination text above table eg. (Displaying X-X of X)-->
+                <?php
+                if (isset($this->Paginator) && $this->params['controller'] != 'dashboard') {
+                    echo $this->element('paging_info', array(), array('plugin' => 'ActiveAdmin'));
+                }
+                ?>
+
                 <!--content as rendered by controller methods-->
                 <?php
                 echo $this->fetch('content');
 
                 //Pagination at the bottom left of content area (has <Prev and next> links)
-                if(isset($this->Paginator) && $this->params['controller'] != 'dashboard') {
-                    echo $this->element('paging', array(), array('plugin'=>'ActiveAdmin'));
+                if (isset($this->Paginator) && $this->params['controller'] != 'dashboard') {
+                    echo $this->element('paging', array(), array('plugin' => 'ActiveAdmin'));
                 }
                 ?>
             </div>
             <!-- end main_content -->
-            </div>
-            <!-- end main_content_wrapper -->
-            <!--Sidebar with filters-->
-            <div id="sidebar">
-                <?php
-                if($this->params['action'] == 'admin_index' && $this->params['controller'] != 'dashboard') {
-                    $file = new File(APP . 'View' . DS . 'Elements' . DS . strtolower($this->name) . '_filter.ctp');
-                    if ($file->exists()) {
-                        echo $this->element(strtolower($this->name) . '_filter');
-                    } else {
-                        echo $this->element('sidebar_filter', array(), array('plugin'=>'ActiveAdmin'));
-                    }
+        </div>
+        <!-- end main_content_wrapper -->
+        <!--Sidebar with filters-->
+        <div id="sidebar">
+            <?php
+            if ($this->params['action'] == 'admin_index' && $this->params['controller'] != 'dashboard') {
+                $file = new File(APP . 'View' . DS . 'Elements' . DS . strtolower($this->name) . '_filter.ctp');
+                if ($file->exists()) {
+                    echo $this->element(strtolower($this->name) . '_filter');
+                } else {
+                    echo $this->element('sidebar_filter', array(), array('plugin' => 'ActiveAdmin'));
                 }
-                if($this->params['action'] == 'admin_add' || $this->params['action'] == 'admin_edit') {
+            }
+            if ($this->params['action'] == 'admin_add' || $this->params['action'] == 'admin_edit') {
 
-                    $file = new File(APP . 'View' . DS . 'Elements' . DS . strtolower($this->name) . '_edit_info.ctp');
-                    if ($file->exists()) {
-                        echo $this->element(strtolower($this->name) . '_edit_info');
-                    }
+                $file = new File(APP . 'View' . DS . 'Elements' . DS . strtolower($this->name) . '_edit_info.ctp');
+                if ($file->exists()) {
+                    echo $this->element(strtolower($this->name) . '_edit_info');
                 }
+            }
 
-                ?>
-            </div>
-            <!-- end sidebar -->
+            ?>
+        </div>
+        <!-- end sidebar -->
 
-            <div class="clear"></div>
+        <div class="clear"></div>
         <div id="footer">
             <p>Base on <a href="http://www.activeadmin.info">Active Admin</a> 0.3.0</p>
         </div>
     </div>
     <!-- end active_admin_wrapper -->
 
+    <?php if(!CakePlugin::loaded('DebugKit')): ?>
         <?php echo $this->element('sql_dump'); ?>
+    <?php endif ?>
 </body>
 </html>
 

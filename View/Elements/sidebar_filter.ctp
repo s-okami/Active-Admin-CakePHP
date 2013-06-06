@@ -22,10 +22,9 @@
       </div>
       <div class="buttons">
         <?php echo $this->Form->submit(__('Filter'), array('div'=>false, 'id'=>'SubmitBtn')) ?>
-        <?php echo $this->Html->link(__('Clear Filters'), array('action'=>'index'), array('class'=>'clear_filters_btn clear_action')) ?>
+        <?php echo $this->Html->link(__('Clear Filters'), "#", array('class'=>'clear_filters_btn clear_action')) ?>
       </div>
     </form>
   </div>
-</div>
 <?php } ?>
 

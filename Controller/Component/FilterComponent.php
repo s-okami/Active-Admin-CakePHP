@@ -17,8 +17,8 @@ class FilterComponent extends Component
      * fields which will replace the regular syntax in where i.e. field = 'value'
      */
     var $fieldFormatting = array(
-        "string" => array("%1\$s LIKE", "%%2\$s%%"),
-        "text" => array("%1\$s LIKE", "%2\$s%%"),
+        "string" => array("%1\$s LIKE", "%%%2\$s%%"),
+        "text" => array("%1\$s LIKE", "%%%2\$s%%"),
         "checkbox" => array("%1\$s =>", "%2\$s%%"),
         "date" => array("DATE_FORMAT(%1\$s, '%%d-%%m-%%Y')", "%2\$s"),
         "datetime" => array("DATE_FORMAT(%1\$s, '%%d-%%m-%%Y')", "%2\$s")
@@ -31,11 +31,11 @@ class FilterComponent extends Component
 
     /**
      * Function which will change controller->data array
-     *
-     * @param object $controller the class of the controller which call this component
      * @access public
+     * @param object $controller the class of the controller which call this component
+     * @return array Generated filter array
      */
-    function process(&$controller)
+    public function process(&$controller)
     {
         $this->_prepareFilter($controller);
         $ret = $this->generateCondition($controller, $controller->data);
@@ -44,10 +44,11 @@ class FilterComponent extends Component
 
     /**
      * Function which loop the provided data and generate the proper where clause
-     * @param object Controller or The model in the controller which has been provided in the post
-     * @param array $data data which is posted from the filter
+     * @param $object object Controller or The model in the controller which has been provided in the post
+     * @param $data array|boolean which is posted from the filter
+     * @return array Filter array
      */
-    function generateCondition($object, $data = false)
+    public function generateCondition($object, $data = false)
     {
         $ret = array();
         if (isset($data) && is_array($data)) {
@@ -96,12 +97,12 @@ class FilterComponent extends Component
             }
 
             //Support for 'scopes' using custom model findTypes
-            if(isset($object->passedArgs) && is_array($object->passedArgs)){
+            if (isset($object->passedArgs) && is_array($object->passedArgs)) {
                 //Check if passedArgs exist
                 $passedArgs = $object->passedArgs;
                 $scope = 'all';
                 //get the scope
-                if (array_key_exists('scope',$passedArgs)){
+                if (array_key_exists('scope', $passedArgs)) {
                     $scope = $passedArgs['scope'];
                     //Set the find type
                     $object->Paginator->settings['findType'] = $scope;
@@ -116,7 +117,7 @@ class FilterComponent extends Component
      * @param object $controller
      * @return void
      */
-    function _prepareFilter(&$controller)
+    public function _prepareFilter(&$controller)
     {
         if (isset($controller->data)) {
             $thisController = $controller->data;
