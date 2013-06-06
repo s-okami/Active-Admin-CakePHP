@@ -26,8 +26,10 @@ class ActiveAdminAppController extends AppController
 
     public $helpers = array('Form', 'Html', 'Session', 'Js' => array('Jquery'), 'Text', 'Time');
 
-    //TODO: add support for additional filters with customizable type (string, int ect) (via custom model variable)
+    //DONE: add support for additional filters with customizable type (via custom model variable)
     //TODO: add support for admins comments
+    //TODO: maybe?, add ability to download data that is displayed (like current RoR ActiveAdmin)
+    //TODO: maybe? add support for batch actions like like (current current RoR ActiveAdmin)
 
     public function beforeFilter()
     {

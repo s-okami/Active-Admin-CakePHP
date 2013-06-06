@@ -5,7 +5,7 @@
     </p>
 <?php elseif ($this->Session->read('Authake.login')): ?>
     <p id="utility_nav">
-        <span> Welcome, <strong><?php echo ucfirst($this->Helpers->Authake->getLogin()); ?></strong><br/></span>
+        <span> Welcome, <strong><?php echo ucfirst($this->Helpers->Authake->getLogin()); ?></strong></span>
         <!--        Last Login: --><?php //echo ($this->Session->read('Authake.timestamp') == null) ? date('n/d/y') : date('n/d/y', $this->Session->read('Authake.timestamp')); ?>
         <!--        &nbsp;&nbsp;&nbsp;|-->
         <?php if ($this->Session->read('Authake.login')) {

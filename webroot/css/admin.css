@@ -141,8 +141,8 @@ form fieldset.buttons li.cancel a span.icon svg{width:9px;height:9px;}
 .sidebar_section select{width:240px;}
 .sidebar_section input[type=text],.sidebar_section input[type=password],.sidebar_section input[type=email],.sidebar_section input[type=url],.sidebar_section input[type=tel],.sidebar_section textarea{width:220px;}
 form.filter_form .filter_form_field{margin-bottom:10px;clear:both;}
-form.filter_form .filter_form_field.filter_numeric input[type=text]{margin-left:16px;width:88px;}
-form.filter_form .filter_form_field.filter_numeric select{width:108px;}
+form.filter_form .filter_form_field.filter_numeric filter_integer input[type=text]{margin-left:16px;width:88px;}
+form.filter_form .filter_form_field.filter_numeric filter_integer select{width:108px;}
 form.filter_form .filter_form_field.filter_check_boxes label{margin-bottom:3px;}
 form.filter_form .filter_form_field.filter_check_boxes .check_boxes_wrapper label{font-weight:normal;margin-bottom:3px;text-transform:none;font-size:1.0em;}
 form.filter_form .filter_form_field.filter_check_boxes .check_boxes_wrapper label input{vertical-align:baseline;}
@@ -601,6 +601,26 @@ form fieldset div.error label{color:#EB4E4E;}
 #main_content div.actions a span.icon{vertical-align:bottom;margin-right:4px;}
 #main_content div.actions a:hover span.icon svg path,#main_content div.actions a:hover span.icon svg polygon,#main_content div.actions a:hover span.icon svg rect,#main_content div.actions a:hover span.icon svg circle{fill:black !important;}
 #main_content div.actions a:active{border:inherit;}
+
+/** Baked templaye index **/
+div.index{
+    /*float:left;*/
+    width:100%;
+    overflow-y: auto;
+    /*border-left:1px solid #666;*/
+    /*padding:10px 2%;*/
+}
+/*div.actions {*/
+    /*float:left;*/
+    /*width:16%;*/
+    /*padding:10px 1.5%;*/
+/*}*/
+/*div.actions h3 {*/
+    /*padding-top:0;*/
+    /*color:#777;*/
+/*}*/
+
+
 
 /************************************************************************************
 CLEARFIX

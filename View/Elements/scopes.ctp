@@ -4,7 +4,7 @@ unset($params_passed_clean['page']);
 $modelName = Inflector::camelize(Inflector::singularize($this->request->params['controller']));
 $model = ClassRegistry::init($modelName);
 $findMethod = $model->findMethods;
-if ($findMethod) {
+if ($findMethod && (strtolower($this->request->params['controller']) != "dashboard")) {
     ?>
     <ul class="scopes table_tools_segmented_control">
         <?php
