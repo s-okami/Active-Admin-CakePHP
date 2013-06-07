@@ -66,12 +66,20 @@
                 <!--content as rendered by controller methods-->
                 <?php
                 echo $this->fetch('content');
+                ?>
 
-                //Pagination at the bottom left of content area (has <Prev and next> links)
+                <!--Pagination at the bottom right of content area (has <Prev and next> links)-->
+                <?php
                 if (isset($this->Paginator) && $this->params['controller'] != 'dashboard') {
                     echo $this->element('paging', array(), array('plugin' => 'ActiveAdmin'));
                 }
                 ?>
+
+                <!--Comments-->
+                <div class="comments panel">
+                    <?php echo $this->element('comments',array(), array('plugin' => 'ActiveAdmin')); ?>
+                </div>
+
             </div>
             <!-- end main_content -->
         </div>
@@ -106,7 +114,7 @@
     </div>
     <!-- end active_admin_wrapper -->
 
-    <?php if(!CakePlugin::loaded('DebugKit')): ?>
+    <?php if (!CakePlugin::loaded('DebugKit')): ?>
         <?php echo $this->element('sql_dump'); ?>
     <?php endif ?>
 </body>

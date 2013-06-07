@@ -9,6 +9,11 @@ $(function () {
 //        //$(this).parents('form').find('input[type="submit"]').click();
 //        return false;
     });
+
+    $(".clear_filters_btn").click(function () {
+        return window.location.search = "";
+    });
+
 //	$('.thickbox,.lightbox').nyroModal();
 
     // AJAX Comments
