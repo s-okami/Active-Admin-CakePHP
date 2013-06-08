@@ -51,7 +51,7 @@ Future features & enhancements
     }
 
 4 - And update your View/(Controller)/admin_index.ctp views, using a table-header element that enable table-sorting:
-   >>> [NOTE]:: This seems to be happening by default now? I baked most of my app in 2.2.X
+   > [NOTE]:: This seems to be happening by default now? I baked most of my app in 2.2.X
 
     <table cellpadding="0" cellspacing="0">
     <?php echo $this->element('table_header', array('keys'=>array('id', 'title', 'label' => 'slug','created', 'modified')), array('plugin'=>'ActiveAdmin')); ?>
@@ -82,7 +82,7 @@ Future features & enhancements
     
     ./Console/cake schema create --plugin ActiveAdmin --name dashboard
 
->>> ADDITIONAL <<<
+[b]ADDITIONAL[b]
 5.1 - And run the Config/Schema/users.sql ( if you want to use Authentication provided by s.okami :) )
 5.2 - And run the Config/Schema/admin_comments.sql for AdminComments
 
@@ -109,15 +109,18 @@ Future features & enhancements
 8 - OPTIONAL -- Additional Filters
     To obtain additional filters simply add the $aaFilter to your models
         eg. public $aaFilter = array("start_desc", "start_platform", "end_desc", "end_platform");
-            This would let you search on any or either of these fields multiple fields will AND together.
+        This would let you search on any or either of these fields multiple fields will AND together.
 
 9 - OPTIONAL -- Scopes
      See the CakePHP Cookbook, on writing these, essentially these can be thought of as shortcut methods.
      eg. You could write one to find Products modified in the past 30 days (using conditions), and then you
-     could simple write $Products->find('recent');
-     http://book.cakephp.org/2.0/en/models/retrieving-your-data.html#creating-custom-find-types
+     could simple write, $Products->find('recent') to retrieve these
+        > http://book.cakephp.org/2.0/en/models/retrieving-your-data.html#creating-custom-find-types
 
->>> NOTE If you're experiencing some issues with the filter, make sure that the display field is set in your model:
+     You have to also add the 'Paginator' component to your AppController or on per controller basis.
+        eg. public $components = array('Paginator');
+
+> NOTE If you're experiencing some issues with the filter, make sure that the display field is set in your model:
     
     var $displayField = "title";
     

@@ -121,6 +121,12 @@ class FilterComponent extends Component
     {
         if (isset($controller->data)) {
             $thisController = $controller->data;
+            //use the supplied query string if post data is empty
+            if (empty($thisController) && (isset($controller->params->query) && !empty($controller->params->query))) {
+                //Data needs to be keyed under the singularized model name, eg. ['Book'] => array(...)
+                $controller_nam = Inflector::singularize($controller->name);
+                $thisController = array($controller_nam => $controller->params->query);
+            }
             foreach ($thisController as $model => $fields) {
                 foreach ($fields as $key => $field) {
                     if ($field == '') {
@@ -128,7 +134,6 @@ class FilterComponent extends Component
                     }
                 }
             }
-
             $controller->Session->write($controller->name . '.' . $controller->params['action'] . $this->identifier, $thisController);
         }
         $filter = $controller->Session->read($controller->name . '.' . $controller->params['action'] . $this->identifier);

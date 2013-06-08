@@ -23,7 +23,8 @@
         <?php if ($this->params['action'] !== 'admin_login' && $adminMenu = $this->requestAction(array('plugin' => 'active_admin', 'controller' => 'dashboard', 'action' => 'menu'))): ?>
             <ul class="tabbed_navigation" id="tabs">
                 <?php foreach ($adminMenu as $menuItem): ?>
-                    <li<?php if ($this->params['controller'] == $menuItem['Dashboard']['url']['controller']) echo " class='current'" ?>><?php echo $this->Html->link($menuItem['Dashboard']['display_title'], array_merge($menuItem['Dashboard']['url'], array('action' => 'index'))); ?></li>
+                    <li<?php if ($this->params['controller'] == $menuItem['Dashboard']['url']['controller']) echo " class='current'" ?>
+                        ><?php echo $this->Html->link($menuItem['Dashboard']['display_title'], array_merge($menuItem['Dashboard']['url'], array('action' => 'index'))); ?></li>
                 <?php endforeach; ?>
             </ul>
         <?php endif; ?>
@@ -34,9 +35,15 @@
             <span class="breadcrumb">
                 <?php echo $this->Html->link('Admin', array('plugin' => 'active_admin', 'controller' => 'dashboard', 'action' => 'index')); ?>
                 <span class="breadcrumb_sep">/</span>
+                <?php
+                if (strtolower($this->params['action']) != "admin_index")
+                    echo $this->Html->link(Inflector::humanize($this->params['controller']), array('plugin' => false, 'controller' => $this->params['controller'], 'action' => 'index'));
+                ?>
             </span>
 
-        <h1 id="page_title"><?php echo $this->Html->link($this->name, array('controller' => $this->params['controller'], 'action' => 'index')); ?></h1>
+        <h1 id="page_title">
+            <?php echo $this->Html->link($this->name, array('controller' => $this->params['controller'], 'action' => 'index')); ?>
+        </h1>
 
         <div class="action_items">
             <span
@@ -68,6 +75,10 @@
                 echo $this->fetch('content');
                 ?>
 
+                <div class="download_links">Download:&nbsp;
+                 <?php echo $this->element('downloads', array(), array('plugin' => 'ActiveAdmin')); ?>
+                </div>
+
                 <!--Pagination at the bottom right of content area (has <Prev and next> links)-->
                 <?php
                 if (isset($this->Paginator) && $this->params['controller'] != 'dashboard') {
@@ -77,7 +88,7 @@
 
                 <!--Comments-->
                 <div class="comments panel">
-                    <?php echo $this->element('comments',array(), array('plugin' => 'ActiveAdmin')); ?>
+                    <?php echo $this->element('comments', array(), array('plugin' => 'ActiveAdmin')); ?>
                 </div>
 
             </div>
