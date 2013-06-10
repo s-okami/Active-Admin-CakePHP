@@ -8,25 +8,24 @@ This install assumes that you've setup your prefix to be admin using the followi
 Essentially this will create the backend at a url like: http://your-domain-here.com/admin
 
 Firstly thanks go out to these guys for patching/tweaking ActiveAdmin =D
-https://github.com/TeckniX/
-https://github.com/s-okami/
+* https://github.com/TeckniX/
+* https://github.com/s-okami/
 and the original author
-https://github.com/gerhardsletten/
+* https://github.com/gerhardsletten/
 
 Features
  * A awesome looking Admin page/s out of the box =D.
  * Search Filters (in addition to using $displayField, add $aaFilter model variable with an array of field names, see step 8. http://imgur.com/YaeJfAC)
  * Admin Comments (can be disabled app-wide or on per model basis)
  * Scopes (requires some work on your behalf writing custom findTypes, see 9.)
- * Some minor integration/support for the Authake (ACL & Authent plugin)
+ * Basic Authentication (as implemented by s-okami)
+ * Some minor integration/support for the Authake (disables the internal Auth system if this plugin is loaded)
  * Works with CakePHP 2.3.X
 
 Future features & enhancements
  *   Ability to download data from view in common formats
  *   Batch actions (like ROR), but only for deleting
- *   Dashboard settings to choosing what controllers to link in menu and such (replacement for step 6.)
- *   Fix a CSS oddities.
-
+ *   Dashboard settings to choosing what controllers to link in menu and such (replacement of step 6.)
 
 ## Install
 

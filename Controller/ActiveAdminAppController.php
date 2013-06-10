@@ -28,7 +28,7 @@ class ActiveAdminAppController extends AppController
 
     //DONE: add support for additional filters with customizable type (via custom model variable)
     //DONE: add support for admins comments
-    //TODO: maybe?, add ability to download data that is displayed (like current RoR ActiveAdmin)
+    //TODO: maybe?, add ability to download data that is displayed (like current RoR ActiveAdmin),
     //TODO: maybe? add support for batch actions like like (current current RoR ActiveAdmin)
 
     public function beforeFilter()
@@ -39,9 +39,8 @@ class ActiveAdminAppController extends AppController
         $ext_auth_loaded = CakePlugin::loaded('Authake');
         //if an external auth system is NOT being used then load in the Auth component
         //with the default options so that internal ActiveAdmin auth can be used instead
-        if (!isset($ext_auth_loaded) && !$ext_auth_loaded) {
-            //Add more components
-            $this->components += array('Auth' => array(
+        if (!isset($ext_auth_loaded) || $ext_auth_loaded == false) {
+            $this->Auth = $this->Components->load('Auth', array(
                 'loginRedirect' => array('controller' => '', 'action' => 'index'),
                 'logoutRedirect' => array('controller' => 'users', 'action' => 'login')
             ));

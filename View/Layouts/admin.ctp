@@ -75,9 +75,11 @@
                 echo $this->fetch('content');
                 ?>
 
-                <div class="download_links">Download:&nbsp;
-                 <?php echo $this->element('downloads', array(), array('plugin' => 'ActiveAdmin')); ?>
-                </div>
+                <?php if (Configure::read('ActiveAdmin.allow_downloads') == true): ?>
+                    <div class="download_links">Download:&nbsp;
+                        <?php echo $this->element('downloads', array(), array('plugin' => 'ActiveAdmin')); ?>
+                    </div>
+                <?php endif ?>
 
                 <!--Pagination at the bottom right of content area (has <Prev and next> links)-->
                 <?php

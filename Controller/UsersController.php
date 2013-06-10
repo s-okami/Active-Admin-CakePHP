@@ -5,10 +5,9 @@ App::uses('AppController', 'Controller');
     ログイン管理をします
 */
 class UsersController extends ActiveAdminAppController {
-    
+
     public function beforeFilter() {
         parent::beforeFilter();
-        
         /*
             If under development mode, enable to add user.
             But now, this does not work correctly...
