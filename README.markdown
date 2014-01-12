@@ -81,7 +81,7 @@ Future features & enhancements
     
     ./Console/cake schema create --plugin ActiveAdmin --name dashboard
 
-[b]ADDITIONAL[b]
+#ADDITIONAL
 5.1 - And run the Config/Schema/users.sql ( if you want to use Authentication provided by s.okami :) )
 5.2 - And run the Config/Schema/admin_comments.sql for AdminComments
 
@@ -114,7 +114,7 @@ Future features & enhancements
      See the CakePHP Cookbook, on writing these, essentially these can be thought of as shortcut methods.
      eg. You could write one to find Products modified in the past 30 days (using conditions), and then you
      could simple write, $Products->find('recent') to retrieve these
-        > http://book.cakephp.org/2.0/en/models/retrieving-your-data.html#creating-custom-find-types
+       http://book.cakephp.org/2.0/en/models/retrieving-your-data.html#creating-custom-find-types
 
      You have to also add the 'Paginator' component to your AppController or on per controller basis.
         eg. public $components = array('Paginator');

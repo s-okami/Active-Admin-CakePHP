@@ -10,8 +10,8 @@
  * If only there was some sort of standard for this stuff.
  *
  * Current Support:
- * Authake
  * ActiveAdmin [stock auth system]
+ * Authake (removed)
  *
  * @author Jared B (jaredb7)
  */
@@ -26,9 +26,9 @@ class AAAuthHelper extends AppHelper
     public $active_auth_plug = array(); //An array containing the location of the user_id and user_name for the currently active Auth plugin
 
     public $known_auth_plugs = array(
-        'Authake' => array(
-            "user_id" => "Authake.id",
-            "user_name" => "Authake.login"),
+//        'Authake' => array(
+//            "user_id" => "Authake.id",
+//            "user_name" => "Authake.login"),
 
         "default" => array(
             "user_id" => "Auth.User.id",

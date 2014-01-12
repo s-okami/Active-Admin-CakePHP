@@ -16,7 +16,6 @@ App::uses('Folder', 'Utility');
  *
  * @package active_admin
  */
-
 class ActiveAdminAppController extends AppController
 {
     public $components = array(
@@ -24,7 +23,9 @@ class ActiveAdminAppController extends AppController
         'Session',
     );
 
-    public $helpers = array('Form', 'Html', 'Session', 'Js' => array('Jquery'), 'Text', 'Time');
+    public $helpers = array('Form', 'Html', 'Session',
+        'Js' => array('Jquery'),
+        'Text', 'Time');
 
     //DONE: add support for additional filters with customizable type (via custom model variable)
     //DONE: add support for admins comments
@@ -35,16 +36,16 @@ class ActiveAdminAppController extends AppController
     {
         parent::beforeFilter();
 
-        //User internal auth if Authake is NOT loaded
-        $ext_auth_loaded = CakePlugin::loaded('Authake');
-        //if an external auth system is NOT being used then load in the Auth component
-        //with the default options so that internal ActiveAdmin auth can be used instead
-        if (!isset($ext_auth_loaded) || $ext_auth_loaded == false) {
-            $this->Auth = $this->Components->load('Auth', array(
-                'loginRedirect' => array('controller' => '', 'action' => 'index'),
-                'logoutRedirect' => array('controller' => 'users', 'action' => 'login')
-            ));
-        }
+//        //User internal auth if Authake is NOT loaded
+//        $ext_auth_loaded = CakePlugin::loaded('Authake');
+//        //if an external auth system is NOT being used then load in the Auth component
+//        //with the default options so that internal ActiveAdmin auth can be used instead
+//        if (!isset($ext_auth_loaded) || $ext_auth_loaded == false) {
+//            $this->Auth = $this->Components->load('Auth', array(
+//                'loginRedirect' => array('controller' => '', 'action' => 'index'),
+//                'logoutRedirect' => array('controller' => 'users', 'action' => 'login')
+//            ));
+//        }
 
         /*
          * Set the layout template to the ActiveAdmin which gives us our dashboard and
