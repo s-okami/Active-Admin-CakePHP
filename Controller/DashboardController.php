@@ -12,7 +12,11 @@ class DashboardController extends ActiveAdminAppController {
     public function admin_index() {
         
     }
-    
+
+    public function admin_settings(){
+        //TODO: Dashboard settings page (ability to add/remove controller links
+    }
+
     public function admin_menu(){      
         if (!empty($this->request->params['requested'])) {    
             // Code added to get the menu items and filter info from dashboard
